@@ -1,2 +1,8 @@
 *.pyc
 *.un~
+loads_tester.egg-info
+bin
+lib
+include
+.tox
+.Python
