@@ -7,7 +7,7 @@ with open(os.path.join(here, 'README.rst')) as f:
     README = f.read()
 
 
-requires = ['gevent']
+requires = ['gevent', 'ws4py', 'wsgiproxy2', 'requests']
 
 
 setup(name='loads-tester',
