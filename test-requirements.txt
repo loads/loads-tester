@@ -1,0 +1,13 @@
+-e git+git@github.com:mozilla-services/loads-base.git#egg=loads-base
+nose
+nose-cov
+circus
+flake8
+paramiko
+boto
+mock
+unittest2
+ws4py
+gevent
+loads
+redis
