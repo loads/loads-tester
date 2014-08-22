@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+from loadstester import __version__
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -7,11 +8,11 @@ with open(os.path.join(here, 'README.rst')) as f:
     README = f.read()
 
 
-requires = ['gevent', 'ws4py', 'wsgiproxy2', 'requests']
+requires = ['gevent', 'ws4py', 'wsgiproxy2', 'requests', 'webtest']
 
 
 setup(name='loads-tester',
-      version='0.1',
+      version=__version__,
       packages=find_packages(),
       include_package_data=True,
       description='The Loads agent',
@@ -26,5 +27,8 @@ setup(name='loads-tester',
       author_email='services-dev@mozilla.org',
       url='https://github.com/mozilla-services/loads-agent',
       tests_require=['nose', 'mock', 'unittest2'],
-      test_suite='nose.collector'
-      )
+      test_suite='nose.collector',
+      entry_points="""
+      [console_scripts]
+      loads-runner  = loadstester.main:main
+      """)

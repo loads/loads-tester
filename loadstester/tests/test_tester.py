@@ -3,7 +3,7 @@ import unittest
 from StringIO import StringIO
 import json
 
-from loadstester import TestCase
+from loadstester.case import TestCase
 from loadstester.results import Results
 from loadstester.streamer import StdoutStreamer
 

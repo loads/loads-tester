@@ -6,7 +6,7 @@ from webtest.app import TestApp as _TestApp
 from wsgiproxy.proxies import HostProxy as _HostProxy
 from wsgiproxy.requests_client import HttpClient
 
-from loads.util import dns_resolve
+from loadstester.util import dns_resolve
 
 
 class TestApp(_TestApp):

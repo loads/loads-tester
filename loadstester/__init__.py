@@ -1,1 +1,1 @@
-from loadstester.case import TestCase  # noqa
+__version__ = '0.1'
