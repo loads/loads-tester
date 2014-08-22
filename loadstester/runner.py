@@ -22,7 +22,9 @@ def _compute_arguments(args):
     Returns a tuple of (total, hits, duration, users, agents).
     """
     users = args.get('users', '1')
-    if isinstance(users, str):
+    if isinstance(users, int):
+        users = [users]
+    elif isinstance(users, str):
         users = users.split(':')
     users = [int(user) for user in users]
     hits = args.get('hits')

@@ -8,10 +8,29 @@ import os
 import zipfile
 import fnmatch
 from StringIO import StringIO
+import json
+import datetime
 
 
 _DNS_CACHE = {}
 logger = logging.getLogger('loads')
+
+
+def total_seconds(td):
+    # works for 2.7 and 2.6
+    diff = (td.seconds + td.days * 24 * 3600) * 10 ** 6
+    return (td.microseconds + diff) / float(10 ** 6)
+
+
+
+class DateTimeJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.isoformat()
+        elif isinstance(obj, datetime.timedelta):
+            return total_seconds(obj)
+        else:
+            return super(DateTimeJSONEncoder, self).default(obj)
 
 
 def set_logger(debug=False, name='loads', logfile='stdout'):

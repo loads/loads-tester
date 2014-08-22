@@ -1,4 +1,5 @@
 import unittest
+import time
 
 
 class Results(unittest.TestResult):
@@ -20,7 +21,11 @@ class Results(unittest.TestResult):
         data = kw
         if test is not None and test.loads_status is not None:
             data.update(test.loads_status)
+        data['time'] = time.time()
         self.streamer.push(action, **data)
+
+    def add_hit(self, **hit):
+        self._stream('hit', None, hit)
 
     def startTestRun(self, agent_id, *args, **kw):
         kw['agent_id'] = agent_id
@@ -53,4 +58,4 @@ class Results(unittest.TestResult):
         self._stream('addSuccess', test, kw)
 
     def incr_counter(self, test, *args, **kw):
-        self._stream('incr_counter', test, kw)
+        self._stream('incr', test, kw)
